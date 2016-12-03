@@ -1,0 +1,87 @@
+body { 
+	font-family: sans-serif; 
+	background-color: #FFF;
+}
+
+h1 {
+	font-family: 'Lobster', cursive;
+	color: #666;
+
+}
+
+h2, h3 {
+	color:#428bca;
+}
+
+h4 { 
+	color: #666; 
+}
+
+p {
+	color: #666;
+}
+
+a {
+	text-decoration: none; 
+	color:#666; 
+	font-size: .9em;
+}
+
+.container {
+	left: 25%; 
+	padding: 5px; 
+	margin: 0 auto; 
+	width: 75%;
+}
+
+.header {
+	background-color: #E9F3D9;
+	border-bottom: 3px solid #89AC10;
+	width:85%;
+	margin:0 auto;
+	padding: 10px;
+}
+
+.author-edit {
+	margin: 20px 0 10px 0;
+}
+
+.padding-bottom {
+	padding-bottom: 30px;
+}
+
+.padding-top {
+	padding-top: 15px;
+}
+
+.title {
+	color: #262626;
+}
+
+.login{
+	color:#D9534F;
+}
+
+.authorlist {
+	list-style-type: none;
+	margin-left: -3em;
+	margin-top: 3em;
+}
+
+.authorlist li {
+	font-size: 150%;
+	padding-bottom: 1em;
+}
+
+.book-entry {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.entries {
+	color: #333;
+}
+
+.flash { 
+	background: #cee5F5; 
+}
