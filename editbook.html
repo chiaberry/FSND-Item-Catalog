@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1">
+			<h2>Edit Book: {{book.title}}</h2>
+		</div>
+</div>
+	
+<div class="row">
+	<div class="col-md-6 col-md-offset-1">
+		<form action="#" method = "post">
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type ="text" class="form-control" maxlength="100" name="title" value="{{book.title}}">
+				
+				<label for="descrip">Description:</label>
+				<input type="text" class="form-control" maxlength="100" name="descrip" value="{{book.description}}">
+
+				<label for="genre">Genre:</label>
+				<input type="text" class="form-control" maxlength="50" name="genre" value="{{book.genre}}">
+
+				<label for="pagecount">Page Count:</label>
+				<input type="text" class="form-control" maxlength="50" name="pagecount" value="{{book.page_count}}">
+
+				<label for="year">Publication Year:</label>
+				<input type="text" class="form-control" maxlength="50" name="year" value="{{book.year}}">
+
+				<div class="padding-bottom"></div>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				Save Changes</button>
+				</div>
+			</form>
+			<a href = "{{url_for('showOneAuthor', author_id=author_id)}}">
+					<button class="btn btn-default delete">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+		</div>
+	</div>
+{% endblock %}

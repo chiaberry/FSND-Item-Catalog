@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="row">
+	<div class ="col-sm-12 text-center">
+	<h3>Authors</h3>
+	<hr>
+	</div>
+
+	<div class="col-sm-4">
+	<h4><a href="{{url_for('addAuthor')}}" class="add">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		Add New Author</a></h4>
+	</div>
+</div>
+
+{% for a in authors %}
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-2">
+		<h3><a href="{{url_for('showOneAuthor', author_id=a.id)}}">{{a.firstName}} {{a.lastName}}</a></h3>
+	</div>
+	<div class="col-sm-4 author-edit">
+		<a href="{{url_for('editAuthor', author_id=a.id)}}">
+			<button class="btn btn-default btn-sm">
+					Edit Author
+			</button>
+		</a>
+		
+		<a href="{{url_for('deleteAuthor', author_id=a.id)}}">
+			<button class="btn btn-default btn-sm"> 
+				Delete Author
+			</button>
+		</a>
+	</div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
