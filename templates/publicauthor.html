@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h2>{{ author.firstName }} {{author.lastName}} <small>Library Shelf</small></h2>
+		</div>
+	</div>
+
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+<hr>
+
+	
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2">			
+
+	{% if books ==[] %}
+		<p>Shelf empty!</a></p>
+	{% endif %}
+
+	{% if books !=[] %}	
+		{% for b in books %}
+			<div class="book-on-shelf">
+				<a href="{{url_for('showBook', author_id=author.id, book_id=b.id)}}">
+					<h3 class="title">{{b.title}}</h3></a>
+				<p>Genre: <span class="entries">{{b.genre}}</span></p>
+				<p>Description: <span class="entries">{{b.description}}</span></p>
+				<p>Publication Year: <span class="entries">{{b.year}}</span></p>
+				<p>Page Count: <span class="entries">{{b.page_count}} </span></p>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+		</div>
+	</div>
+	
+{% endblock %}

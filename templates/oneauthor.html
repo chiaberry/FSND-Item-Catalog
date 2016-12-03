@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+ 		{% if messages %}
+          <ul>
+        	{% for message in messages %}
+            	<li> <strong> {{ message }} </strong> </li>
+        	{% endfor %}
+         </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h2>{{ author.firstName }} {{author.lastName}} <small>Library Shelf</small></h2>
+		</div>
+	</div>
+
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('editAuthor', author_id = author.id )}}">
+				<button class="btn btn-default btn-sm" id="new-menu-item">
+					Edit Author
+				</button>
+			</a>
+			<a href="{{url_for('addBook', author_id = author.id )}}">
+				<button class="btn btn-default btn-sm" id="new-menu-item">
+					Add Book
+				</button>
+			</a>
+						<a href="{{url_for('deleteAuthor', author_id = author.id )}}">
+				<button class="btn btn-default delete btn-sm" id="delete-restaurant">
+					Delete Author
+				</button>
+			</a>
+		</div>
+	</div>
+
+
+	<hr>
+	<div class="row">
+		<div class="col-sm-7 col-sm-offset-2">			
+
+	{% if books ==[] %}
+		<p>Shelf empty, <a href="{{url_for('addBook', author_id=author.id)}}"> add new book? </a></p>
+	{% endif %}
+
+	{% if books !=[] %}	
+		{% for b in books %}
+			<div class="book-entry">
+				<a href="{{url_for('showBook', author_id=author.id, book_id=b.id)}}">
+					<h3 class="title">{{b.title}}</h3>
+				</a>
+				<p>Genre: <span class="entries">{{b.genre}}</span></p>
+				<p>Description: <span class="entries">{{b.description}}</span></p>
+				<p>Publication Year: <span class="entries">{{b.year}}</span></p>
+				<p>Page Count: <span class="entries">{{b.page_count}} </span></p>
+				<a href='{{url_for('editBook', author_id = author.id, book_id=b.id ) }}'>Edit</a> | 
+				<a href='{{url_for('deleteBook', author_id = author.id, book_id=b.id ) }}'>Delete</a>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+		</div>
+	</div>
+	
+{% endblock %}
